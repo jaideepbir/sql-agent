@@ -1,0 +1,36 @@
+server {
+    listen 443 ssl default_server; 
+    listen [::]:443 ssl default_server;
+    root /var/www/html/eliza-mail.co;
+    index index.html index.htm index.nginx-debian.html;
+
+    server_name eliza-mail.co www.eliza-mail.co;
+
+    location / {
+	root /var/www/html/eliza-mail.co;	
+        #proxy_pass http://10.0.0.6:443;
+	proxy_set_header Host $host;
+	try_files $uri $uri/ =404;
+        }
+
+    #listen [::]:443 ssl; #ipv6only=on; # managed by Certbot
+    #listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/eliza-mail.co/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/eliza-mail.co/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+}
+server {
+	listen 80;
+	listen [::]:80;
+	server_name eliza-mail.co www.eliza-mail.co;
+	location / {
+		root /var/www/html/eliza-mail.co;
+		#return 404; # managed by Certbot
+	}
+	#if ($host = eliza-mail.co) {
+	#	return 301 https://$host$request_uri;
+	#} # managed by Certbot
+
+}
