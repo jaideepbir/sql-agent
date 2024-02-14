@@ -1,4 +1,5 @@
 <img width="411" alt="logo_light" src="https://github.com/jaideepbir/sql-agent/assets/5706850/71f743cc-62bd-4e3a-b52f-89e07b0cc81e">
+
 **SQL - Chat**
 
 #This application package is in active development.
