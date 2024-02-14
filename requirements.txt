@@ -1,0 +1,12 @@
+chainlit
+mysql-connector-python
+openai
+langchain
+langchain_community
+langchain_experimental
+langchain_openai
+numpy
+plotly
+tabulate
+python-dotenv
+pandas
